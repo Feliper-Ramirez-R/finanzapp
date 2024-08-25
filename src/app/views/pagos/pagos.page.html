@@ -1,0 +1,68 @@
+<ion-header >
+    <app-header tittle="pagos" ></app-header>
+</ion-header>
+
+<ion-content class="ion-padding" >
+
+  <ion-button class="ion-float-right" color="aplication"  (click)="new()" ><ion-icon name="add-circle-outline"></ion-icon></ion-button><br><br>
+
+  <!-- Check -->
+  <!-- <ion-list mode="ios" [inset]="true">
+    <ion-item *ngFor="let item of datosBD" >
+      <ion-checkbox slot="start" aria-label="Toggle task completion" [(ngModel)]="item.checked" (ionChange)="updateSelectedItems()"></ion-checkbox>
+      <ion-input aria-label="Task name" value="{{item.name}}"></ion-input>
+    </ion-item>
+  </ion-list> -->
+
+
+
+  <ion-list mode="ios" [inset]="true">
+    <ion-item-sliding>
+      <ion-item (click)="alertPagar()" [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Rick Astley</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item [button]="true">
+        <ion-avatar aria-hidden="true" slot="start">
+          <img alt="" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <ion-label>Leeroy Jenkins</ion-label>
+      </ion-item>
+      <ion-item-options slot="end">
+        <ion-item-option color="warning">
+          <ion-icon slot="icon-only" name="pin"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="tertiary">
+          <ion-icon slot="icon-only" name="share"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color="danger" expandable="true">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+
+ <!--  <ion-button expand="block" (click)="pagados()" mode="ios" color="aplication" >
+    <ion-icon slot="start" name="checkmark-outline"></ion-icon>
+    Enviar
+  </ion-button> -->
+
+</ion-content>

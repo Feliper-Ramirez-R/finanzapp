@@ -5,7 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
+
 import { Tab1PageRoutingModule } from './tab1-routing.module';
+
+import {  BaseChartDirective    } from 'ng2-charts';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   imports: [
@@ -13,7 +17,9 @@ import { Tab1PageRoutingModule } from './tab1-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    BaseChartDirective,
+    ComponentsModule 
   ],
   declarations: [Tab1Page]
 })

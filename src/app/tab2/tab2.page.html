@@ -1,17 +1,112 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header-tabs tittle="egresos" ></app-header-tabs>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" >
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+
+  <ion-button expand="block" (click)="newItem()" mode="ios" color="aplication" >
+    <ion-icon slot="start" name="add-outline"></ion-icon>
+    Nuevo
+  </ion-button>
+  
+
+   <div *ngIf="datosBD.length>0 else vacio" >
+    <ion-card *ngFor="let egreso of datosBD" mode="ios" >
+      <!-- <ion-list *ngIf="ingreso.type_id === 2" lines="none" >
+        <ion-item>
+          <ion-toggle [checked]="ingreso.enabled" color="aplication" justify="space-between">{{ingreso.enabled === 0 ? 'Inactivo' : 'Activo'}}</ion-toggle>
+        </ion-item>
+      </ion-list> -->
+      <ion-card-header>
+        <ion-card-title>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="assets/images/dollar-1.svg"
+              style="filter: invert(18%) sepia(80%) saturate(5456%) hue-rotate(277deg) brightness(252%) contrast(232%);" />
+            </ion-avatar>
+            <ion-label>{{egreso.amount | number}}</ion-label>
+          </ion-item>
+  
+        </ion-card-title>
+        <ion-card-subtitle>Egreso {{egreso.type_name}} {{egreso.date | date:'dd-MMM-yy-hh:mm a'}} </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        egreso por concepto de {{egreso.name}}
+      </ion-card-content>
+      <ion-button class="ion-float-right" color="aplication" fill="clear" (click)="edit(egreso)" ><ion-icon name="create-outline"></ion-icon></ion-button>
+      <ion-button  (click)="delete(egreso)" class="ion-float-right" color="danger" fill="clear"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-card>
+   </div>
+
+
+   <ng-template #vacio >
+    <div style="text-align: center; margin-top: 100px; margin-bottom: 30px;"><img
+      style="border-radius: 50%; width: 35%;filter: invert(18%) sepia(80%) saturate(5456%) hue-rotate(277deg) brightness(252%) contrast(232%);"
+      src="assets/images/dollar-1.svg" />
+      
+        <h3 style="color: darkgray;" >No tienes egresos</h3>
+      </div>
+   </ng-template>
+ 
+    
+
+
+
+
+
+<ion-modal  [isOpen]="openModal">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar color="aplication" >
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancelar</ion-button>
+        </ion-buttons>
+        <!-- <ion-title>Welcome</ion-title> -->
+        <ion-buttons slot="end">
+          <ion-button (click)="confirm()" [strong]="true">{{crear ?'Crear' : 'Actualizar'}}</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+
+
+      <!-- <ion-card mode="ios" > -->
+        <ion-card-header>
+          <!-- <ion-card-title>Card Title</ion-card-title> -->
+          <ion-card-subtitle>Ingresa los siguientes campos</ion-card-subtitle>
+        </ion-card-header>
+      
+        <!-- <ion-card-content> -->
+          <form [formGroup]="form" autocomplete="off">
+
+            <ion-list lines="none" >
+             
+              <ion-item>
+                <ion-datetime-button  datetime="datetime"></ion-datetime-button>
+
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime formControlName="date" id="datetime"></ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-item>
+    
+              <ion-item  >
+                <ion-input formControlName="amount" errorText="Este campo es requerido" mode="ios" label="Valor egreso" type="number" [clearInput]="true" labelPlacement="floating" placeholder="Ingrese valor"></ion-input>
+              </ion-item>
+          
+              <ion-item>
+                <ion-input formControlName="name" errorText="Este campo es requerido" mode="ios" label="Nombre egreso"  [clearInput]="true" labelPlacement="floating" placeholder="Ingrese nombre"></ion-input>
+              </ion-item>
+          
+            </ion-list>
+          
+          </form>
+        <!-- </ion-card-content> -->
+      <!-- </ion-card> -->
+      
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
 </ion-content>

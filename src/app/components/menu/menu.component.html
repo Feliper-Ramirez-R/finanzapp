@@ -1,0 +1,18 @@
+<ion-content>
+  <ion-list>
+    <ion-menu-toggle *ngFor="let c of componentes">
+      <ion-item 
+      [routerLink]="c.redirecTo">
+      <ion-icon slot="start" [name]="c.icon"></ion-icon>
+      {{c.name}}
+      </ion-item>
+    </ion-menu-toggle>
+
+   <!--  <ion-menu-toggle (click)="logout()" >
+      <ion-item >
+     <ion-icon slot="start" name="exit-outline"></ion-icon>
+      Cerrar sesión
+      </ion-item>
+    </ion-menu-toggle> -->
+  </ion-list>
+</ion-content>

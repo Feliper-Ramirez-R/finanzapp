@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="aplication">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">login</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;"><img
+      style="border-radius: 50%; width: 35%;filter: invert(18%) sepia(80%) saturate(5456%) hue-rotate(277deg) brightness(252%) contrast(232%);"
+      src="https://ionicframework.com/docs/img/demos/avatar.svg" /></div>
+
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-input color="aplication" label="Usuario" formControlName="email" errorText="Este campo es requerido"
+        labelPlacement="floating" placeholder="Ingrese su usuario"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-vertical">
+      <ion-input color="aplication" label="Contraseña" errorText="Este campo es requerido"
+        [type]="showPwd ? 'text' : 'password'" formControlName="password" labelPlacement="floating"
+        placeholder="Ingrese su contraseña"></ion-input>
+      <ion-icon style="margin-top: 4px;" slot="end" [name]="pwdIcon" (click)="togglePwd()"></ion-icon>
+    </ion-item>
+
+    <ion-button style="margin-top: 100px;" expand="block" mode="ios" color="aplication" (click)="login()">
+      Ingresar
+    </ion-button>
+  </form>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="aplication">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-footer>
